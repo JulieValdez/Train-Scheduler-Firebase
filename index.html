@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/reset.css" />
+    <link rel="stylesheet" type="text/css" href="assets/style.css" />
+
+    <!-- Firebase References -->
+    <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-database.js"></script>
+
+    <!-- Moment.js Reference -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+    <title>Train Time Firebase</title>
+  </head>
+  <body>
+    <!-- Main Container -->
+    <div class="container">
+      <!-- Jumbotron header -->
+      <div class="jumbotron bg-dark text-light">
+        <h1 class="display-4">Anytime is Train Time</h1>
+        <p class="lead">
+          My train of thought derailed. There were no survivors.
+        </p>
+      </div>
+
+      <!-- Row for table displaying info from Firebase -->
+      <div class="row">
+        <div class="col-md-12">
+        <!-- Table inside a card to hold the current train schedue -->
+        <div class="card">
+          <div class="card-header">
+            Current Train Schedule
+          </div>
+          <div class="card-body">
+            <table class="table" id='train-schedule'>
+              <thead>
+                <tr>
+                  <th scope="col">TrainName</th>
+                  <th scope="col">Destination</th>
+                  <th scope="col">Frequency (min)</th>
+                  <th scope="col">Next Arrival</th>
+                  <th scope="col">Minutes Away</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <!-- Input Form to enter train data -->
+      <div class="row">
+          <div class="col-md-12">
+            <!-- Add Employee  -->
+            <div class="card mb-4">
+              <div class="card-header">Add Train</div>
+              <div class="card-body">
+
+                <!-- Entry Form -->
+                <form>
+                  <div class="form-group">
+                    <label for="train-name-input">Train Name</label>
+                    <input class="form-input" id="train-name-input" type="text">
+                  </div>
+                  <div class="form-group">
+                    <label for="destination-input">Destination</label>
+                    <input class="form-input" id="destination-input" type="text">
+                  </div>
+                  <div class="form-group">
+                    <label for="train-time-input">First Train Time (HH:mm - military time)</label>
+                    <input class="form-input" id="train-time-input" type="text">
+                  </div>
+                  <div class="form-group">
+                    <label for="frequency-input">Frequency (min)</label>
+                    <input class="form-input" id="frequency-input" type="text">
+                  </div>
+                  <button class="btn btn-primary float-left" id="add-train-btn">Submit</button>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+    <!-- Optional JavaScript -->
+    <script src="assets/javascript/app.js"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
