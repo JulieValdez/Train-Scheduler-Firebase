@@ -1,13 +1,8 @@
-// variable 
-
-
-
-
-
-
-
-
-
+// variable to hold database info and initialize database
+// create button click listener to add the train information
+// capture the info from the input form and save it to the database
+// use the database info and update the table
+// calculate the time of the next train
 
 var firebaseConfig = {
   apiKey: "AIzaSyBzQx62DI4dlCsh3ui0IunZm5mLMzuE9sQ",
@@ -20,3 +15,41 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+
+var database = firebase.database();
+
+// submit button for adding train
+$("#add-train-btn").on("click", function(event) {
+  event.preventDefault();
+
+  var trainName = $("#train-name-input")
+    .val()
+    .trim();
+  var trainDestination = $("#destination-input")
+    .val()
+    .trim();
+  var trainTime = moment(
+    $("#train-time-input")
+      .val()
+      .trim()
+  ).format("HH:mm");
+  var trainFrequency = moment(
+    $("#frequency-input")
+      .val()
+      .trim()
+  ).format("minutes");
+
+  var newTrain = {
+    name: trainName,
+    destination: trainDestination,
+    time: trainTime,
+    frequency: trainFrequency
+  };
+
+  database.ref().push(newTrain);
+
+  console.log(newTrain.name);
+  console.log(newTrain.destination);
+  console.log(newTrain.time);
+  console.log(newTrain.frequency);
+});
