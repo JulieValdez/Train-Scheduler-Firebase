@@ -22,6 +22,7 @@ var database = firebase.database();
 $("#add-train-btn").on("click", function(event) {
   event.preventDefault();
 
+  // takes values from input form
   var trainName = $("#train-name-input")
     .val()
     .trim();
@@ -35,22 +36,44 @@ $("#add-train-btn").on("click", function(event) {
     .val()
     .trim();
 
+  // new variable with values
   var newTrain = {
     name: trainName,
     destination: trainDestination,
     time: trainTime,
     frequency: trainFrequency
   };
-
+  // push that variable to the firebase database
   database.ref().push(newTrain);
 
   console.log(newTrain.name);
   console.log(newTrain.destination);
   console.log(newTrain.time);
   console.log(newTrain.frequency);
-
+  // this worked
+  // clears out the input values after the submit button is clicked
   $("#train-name-input").val("");
   $("#destination-input").val("");
   $("#train-time-input").val("");
   $("#frequency-input").val("");
+});
+// will update the database everytime a new train"child" is added grabs those values and creates new snapshots with the newest info
+database.ref().on("child_added", function(childSnapshot) {
+  var trainName = childSnapshot.val().name;
+  var trainDestination = childSnapshot.val().destination;
+  var trainTime = childSnapshot.val().time;
+  var trainFrequency = childSnapshot.val().frequency;
+
+  console.log(trainName);
+  console.log(trainDestination);
+  console.log(trainTime);
+  console.log(trainFrequency);
+
+  var trainTableRow = $("<tr>").append(
+    $("<td>").text(trainName),
+    $("<td>").text(trainDestination),
+    $("<td>").text(trainFrequency),
+    $("<td>").text(trainTime)
+  );
+  $("#train-schedule > tbody").append(trainTableRow);
 });
