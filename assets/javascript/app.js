@@ -28,16 +28,12 @@ $("#add-train-btn").on("click", function(event) {
   var trainDestination = $("#destination-input")
     .val()
     .trim();
-  var trainTime = moment(
-    $("#train-time-input")
-      .val()
-      .trim()
-  ).format("HH:mm");
-  var trainFrequency = moment(
-    $("#frequency-input")
-      .val()
-      .trim()
-  ).format("minutes");
+  var trainTime = $("#train-time-input")
+    .val()
+    .trim();
+  var trainFrequency = $("#frequency-input")
+    .val()
+    .trim();
 
   var newTrain = {
     name: trainName,
@@ -52,4 +48,9 @@ $("#add-train-btn").on("click", function(event) {
   console.log(newTrain.destination);
   console.log(newTrain.time);
   console.log(newTrain.frequency);
+
+  $("#train-name-input").val("");
+  $("#destination-input").val("");
+  $("#train-time-input").val("");
+  $("#frequency-input").val("");
 });
